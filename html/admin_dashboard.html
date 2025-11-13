@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/form_style.css">
+  <style>
+    .container { max-width: 900px; margin: 40px auto; text-align: center; }
+    .grid { display:flex; gap:20px; justify-content:center; margin-top:30px; }
+    .card { background: #fff; border: 1px solid #e6e6e6; padding: 30px; width: 260px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+    .card h3 { margin: 0 0 12px 0; color:#005f73; }
+    .card p { color:#333; font-size:14px; margin-bottom:18px }
+    .card a { display:inline-block; padding:10px 16px; background:#005f73; color:white; text-decoration:none; border-radius:6px; }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .top a.logout { background:#b00020; padding:8px 12px; color:white; border-radius:6px; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="form-box container">
+    <div class="top">
+      <h1>Admin Dashboard</h1>
+      <div>
+        <a class="logout" href="../php/admin_logout.php">Logout</a>
+      </div>
+    </div>
+
+    <p style="color:#005f73;">Use the links below to manage users and requests. Admin pages are implemented as PHP endpoints.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Manage Users</h3>
+        <p>View all registered users and delete accounts.</p>
+        <a href="../php/admin_users.php">Open Users</a>
+      </div>
+
+      <div class="card">
+        <h3>Manage Requests</h3>
+        <p>View, update status, and delete maintenance requests.</p>
+        <a href="../php/admin_requests.php">Open Requests</a>
+      </div>
+    </div>
+
+    <div style="margin-top:28px">
+      <a href="homepage.html">← Back to Homepage</a>
+    </div>
+  </div>
+
+  <div class="footer">2025 Apartment Maintenance System — All Rights Reserved</div>
+</body>
+</html>
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/form_style.css">
+  <style>
+    .container { max-width: 1100px; margin: 30px auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    th { background: rgba(0,95,115,0.1); }
+    select, input[type="text"] { padding:6px; border-radius:4px; }
+    .btn { padding:8px 12px; border-radius:6px; border:none; background:#005f73; color:white; cursor:pointer; }
+    .btn-danger { background:#b00020; }
+  </style>
+</head>
+<body>
+  <div class="form-box container">
+    <h1>Admin - Manage Requests</h1>
+  </div>
+  <div class="footer">2025 Apartment Maintenance System - All Rights Reserved.</div>
+</body>
+</html>

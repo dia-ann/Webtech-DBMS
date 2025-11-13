@@ -8,19 +8,20 @@
     <div class="form-box">
         <h1>New Maintenance Request</h1>
 
-        <form>
-            
+        <!-- Form sends data to PHP file -->
+        <form action="../php/submit_request.php" method="POST" enctype="multipart/form-data">
+
             <label>Request ID:</label>
-            <input type="text" id="requestId" name="requestId" readonly value="REQ001"><br>
+            <input type="text" id="requestId" name="requestId" readonly value="" placeholder="(assigned after submit)"><br>
 
             <label>Resident Name:</label>
             <input type="text" id="residentName" name="residentName" required><br>
 
             <label>Apartment Number:</label>
-            <input type="text" id="apartmentNumber" name="apartmentNumber"><br>
+            <input type="text" id="apartmentNumber" name="apartmentNumber" required><br>
 
             <label>Maintenance Type:</label>
-            <select name="issueType">
+            <select name="issueType" required>
                 <option value="">--Select--</option>
                 <option value="plumbing">Plumbing</option>
                 <option value="electrical">Electrical</option>
@@ -31,9 +32,6 @@
 
             <label>Issue Description:</label>
             <textarea id="description" name="description" rows="4" cols="40" placeholder="Describe the issue in detail"></textarea><br>
-
-            <label>Upload Image of Issue (optional):</label>
-            <input type="file" id="issueImage" name="issueImage" accept="image/*"><br>
 
             <label>Preferred Date & Time for Repair:</label>
             <input type="datetime-local" id="preferredDateTime" name="preferredDateTime"><br>
