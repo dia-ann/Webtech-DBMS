@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title> 
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:10px;
+            padding:20px;
+            background-color:#005f73;
+            text-align:center;
+            
+        }
+
+        .form-box {
+            width: 40%;
+            margin: 80px auto;
+            padding: 20px;
+            border: 2px solid #005f73;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: #005f73;
+        }
+        h2 {
+            text-align: center;
+            color: #005f73;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            margin: 5px 0;
+        }
+
+        
+        /*pseudo classes*/
+        a:link{
+            background-color:#005f73;
+            color:white;
+        }
+        a:hover{
+            background-color:brown;
+            font-size:20px;
+        }
+       
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #005f73;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="form-box">
+        <h1>Sign In</h1>
+        <h2>Maintenance Request System</h2>
+        <form onsubmit="return validate()" action="../php/signin.php" method="post">
+            <label>Email:</label>
+            <input type="email" id="em" name="email"><br>
+
+            <label>Password:</label>
+            <input type="password" id="ps" name="password"><br>
+            
+            <label>Select role</label>
+            <input type="radio" id="rl" name="user_role" value="Resident">Resident
+            <input type="radio" id="rl" name="user_role" value="Admin">Admin<br>
+            
+        
+        
+            <input type="reset" value="Reset">
+            <input type="submit" value="Sign In">
+        </form>
+         <a href="signup.html" target="_blank">Don't have an account? Click here</a>
+    </div>
+
+    <div class="footer">
+        2025 Maintenance Request System - All Rights Reserved.
+    </div>
+</body>
+</html>

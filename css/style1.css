@@ -1,0 +1,143 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header Section */
+header {
+  background-color: #005f73;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+nav {
+  background-color: #0a9396;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #e9f5f2;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  color: #005f73;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #333;
+  font-size: 17px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+.feature-card {
+  background-color: #94d2bd;
+  border: 1px solid #005f73;
+  border-radius: 8px;
+  width: 260px;
+  text-align: center;
+  margin: 15px;
+  padding: 15px;
+}
+
+.feature-card img {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.feature-card h3 {
+  color: #005f73;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 15px;
+  color: #333;
+}
+
+/* About Section */
+.about {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.about h2 {
+  color: #005f73;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about p {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Contact Section */
+.contact {
+  background-color: #e9f5f2;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.contact h2 {
+  color: #005f73;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.contact p {
+  font-size: 16px;
+}
+
+/* Footer Section */
+footer {
+  background-color: #005f73;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}

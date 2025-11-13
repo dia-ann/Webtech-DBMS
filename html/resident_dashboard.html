@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Resident Dashboard</title>
+  <link rel="stylesheet" href="../css/style1.css">
+  <style>
+    body {
+      background-color: #f1f8f6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #005f73;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    header h2 {
+      font-size: 24px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-info img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 3px;
+    }
+
+    .user-info span {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Dashboard layout */
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      gap: 50px;
+    }
+
+    .row {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+    }
+
+    .box {
+      display: inline-block;
+      background-color: #94d2bd;
+      border: 2px solid #005f73;
+      border-radius: 12px;
+      width: 280px;
+      height: 180px;
+      text-align: center;
+      line-height: 180px;
+      font-size: 20px;
+      color: #003f4f;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .box:hover {
+      background-color: #0a9396;
+      color: white;
+
+    }
+
+    footer {
+      background-color: #005f73;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>Resident Dashboard</h2>
+    <div class="user-info">
+      <img src="../images/user_icon.png" alt="User">
+      <span>Welcome, John Doe</span>
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <div class="row">
+      <a href="view_profile.html" class="box">Profile Settings</a>
+      <a href="make_request.html" class="box">Create a Request</a>
+    </div>
+    <div class="row">
+      <a href="request_status.html" class="box">Request Status</a>
+    </div>
+  </div>
+
+  <footer>
+    2025 Apartment Maintenance System — All Rights Reserved
+  </footer>
+
+</body>
+</html>

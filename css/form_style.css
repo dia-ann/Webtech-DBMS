@@ -1,0 +1,83 @@
+/* Common form styling for Sign Up, Sign In, and Make Request pages */
+
+body {
+    background-color: #005f73; 
+    background-image: url("../images/pic1.jpg");
+    background-repeat: no-repeat; 
+    background-position: right bottom;
+    background-attachment: fixed; 
+    background-size: cover; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-box {
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    border: 3px solid #005f73;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #005f73;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea, select {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 6px;
+    width: 95%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input[type="radio"], 
+input[type="checkbox"], 
+input[type="color"], 
+input[type="file"], 
+input[type="range"], 
+input[type="image"] {
+    width: auto;
+}
+
+input[type="submit"], 
+input[type="reset"], 
+button {
+    width: 120px;
+    margin: 10px;
+    background-color: #005f73;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+input[type="submit"]:hover, 
+input[type="reset"]:hover, 
+button:hover {
+    background-color: #0a9396;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #005f73;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}

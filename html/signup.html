@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/form_style.css">
+    
+    <script>
+        
+        function validate()
+        {
+            var fname = document.getElementById("fn").value.trim();
+            var lname = document.getElementById("ln").value.trim();
+            var gender = document.getElementsByName("gender");
+            var email = document.getElementById("em").value.trim();
+            var phone = document.getElementById("phn").value.trim();
+            var num = document.getElementById("num").value.trim();
+            var checkboxes = document.getElementsByName("lan");
+           
+            var address = document.getElementById("add").value.trim();
+            var accType = document.getElementById("account_type");
+            var password = document.getElementById("ps").value.trim();
+            var confirmPassword = document.getElementById("cps").value.trim();
+            var checkboxes = document.getElementsByName("tp");
+
+            // patterns
+            var namePattern = /^[A-Za-z]+$/;
+            var emailPattern = /^([a-zA-Z0-9\.\-]+)@([a-zA-Z0-9\-]+)\.([a-z]+)(\.[a-z]+)?$/;
+            var phonePattern = /^[789]{1}[0-9]{9}$/;
+
+            // Validate names
+            if (fname === "" || !namePattern.test(fname)) 
+            {
+                alert("Please enter a valid First Name (only letters).");
+                return false;
+            }
+            if (lname === "" || !namePattern.test(lname)) 
+            {
+                alert("Please enter a valid Last Name (only letters).");
+                return false;
+            }
+
+            // Validate gender
+            var gen_selected=" ";
+            for(var i=0;i<gender.length;i++)
+            {
+                if(gender[i].checked==true)
+                {
+                    gen_selected=gender[i].value;
+                    break;
+                }
+            }
+            if(gen_selected==" ")
+            {
+                alert("please select your gender");
+                return false;
+            }
+
+            // Validate email
+            if (email === "" || !emailPattern.test(email)) 
+            {
+                alert("Please enter a valid Email address.");
+                return false;
+            }
+
+            // Validate phone number
+            if (phone === "" || !phonePattern.test(phone)) 
+            {
+                alert("Please enter a valid 10-digit Phone Number starting with 7, 8, or 9.");
+                return false;
+            }
+
+            
+            // Validate apartment number
+            if (num === "") 
+            {
+                alert("Please enter your Apartment Number.");
+                return false;
+            }
+
+           
+            // Validate address
+            if (address === "") 
+            {
+                alert("Please enter your Address.");
+                return false;
+            }
+
+            //Validate account-type
+            var account=" ";
+            account=accType.options[accType.selectedIndex].value;
+            if(account==" "||account=="----")
+            {
+                alert("Please select an account type");
+                return false;
+            } 
+           
+
+
+
+            // Validate password 
+            if (password.trim().length < 6 || password.trim().length > 10) 
+            {
+                alert("Password size must be 6 to 10 characters.");
+                return false;
+            } 
+            else if (password.search(/[A-Z]/) == -1) 
+            {
+                alert("Password must contain at least one Uppercase letter.");
+                return false;
+            } 
+            else if (password.search(/[a-z]/) == -1) 
+            {
+                alert("Password must contain at least one Lowercase letter.");
+                return false;
+            } 
+            else if (password.search(/[0-9]/) == -1) 
+            {
+                alert("Password must contain at least one Number.");
+                return false;
+            } 
+            else if (password.search(/[\@\#\$\%\&\*\:\;\.\,]/) == -1) 
+            {
+                alert("Password must contain at least one Special Character (@ # $ % & * : ; . ,).");
+                return false;
+            }
+
+            // Confirm password
+            if (confirmPassword == "") 
+            {
+                alert("Please confirm your Password.");
+                return false;
+            }
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            alert("All details are valid. Form submitted successfully!");
+            return true
+        }
+    </script>
+</head>
+<body>
+    <div class="form-box">
+        <h1>Sign Up</h1>
+        <form onsubmit="return validate()" action="../php/signup.php" method="post">
+
+            <label>First Name:</label>
+            <input type="text" id="fn" name="firstname"><br>
+
+            <label>Last Name:</label>
+            <input type="text" id="ln" name="lastname"><br>
+
+            <label>Gender:</label><br>
+            <input type="radio" id="m" name="gender" value="male"> Male
+            <input type="radio" id="f" name="gender" value="female"> Female<br>
+
+            <label>Email:</label>
+            <input type="text" id="em" name="email"><br>
+
+            <label>Phone Number:</label>
+            <input type="tel" id="phn" name="phone"><br>
+
+            <label>Enter Apartment Number</label>
+            <input type="number" id="num" name="num"><br>
+
+
+            <label>Account Type:</label>
+            <select id="account_type" name="account_type">
+                <option value="----">Select</option>
+                <option value="Resident">Resident</option>
+                <option value="Admin">Admin</option>
+            </select><br>
+
+            <label>Password:</label>
+            <input type="password" id="ps" name="password"><br>
+
+            <label>Confirm Password:</label>
+            <input type="password" id="cps" name="confirm_password"><br>
+
+            <label>Choose your prefered language</label><br>
+            <input type="checkbox" id="en" name="lan" value="English">English<br>
+            <input type="checkbox" id="kon" name="lan" value="Konkani">English<br>
+            <input type="checkbox" id="hi" name="lan" value="Hindi">Hindi<br>
+            <input type="checkbox" id="other" name="lan" value="Other">Others<br>
+            
+           
+            
+
+           
+            <input type="submit">
+
+            <input type="reset">
+            
+        </form>
+    </div>
+</body>
+</html>
