@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Search</title>
+        <script>
+            function validate()
+            {
+                apt=prompt("Enter apartment ID");
+                if(apt=="")
+                {
+                    alert("Empty field!!");
+                    return;
+                }
+                window.location.href = "../php/search.php?apt_id=" + apt;
+            }
+        </script>
+
+    </head>
+    <body onload="validate()"></body>
+</html>
