@@ -1,31 +1,11 @@
 <?php
-session_start();
+$conn = mysqli_connect("localhost", "root", "", "project25_db");
 
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'Admin') {
-    echo "Unauthorized";
-    exit;
-}
+$req_id = $_POST['req_id'];
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../html/admin_dashboard.html');
-    exit;
-}
+$sql = "DELETE FROM request WHERE req_id='$req_id'";
+mysqli_query($conn, $sql);
 
-$req_id = isset($_POST['req_id']) ? intval($_POST['req_id']) : 0;
-
-$conn = new mysqli('localhost', 'root', '', 'project25_db');
-if ($conn->connect_error) {
-    die('DB error: ' . $conn->connect_error);
-}
-
-$sql = "DELETE FROM request WHERE req_id=$req_id";
-
-if ($conn->query($sql) === TRUE) {
-    header('Location: ../html/admin_dashboard.html');
-    exit;
-} else {
-    echo 'Error: ' . $conn->error;
-}
-
-$conn->close();
+header("Location: admin_requests.php");
+exit;
 ?>

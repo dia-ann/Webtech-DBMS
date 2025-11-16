@@ -1,102 +1,22 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <title>Request Status</title>
-  <link rel="stylesheet" href="../css/form_style.css">
-  <style>
-    /* Extra layout for table inside form-box */
-    .form-box h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-
-    th {
-      background-color: #94d2bd;
-      color: #003f4f;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f1f1f1;
-    }
-
-    .status-pending {
-      color: #bb3e03;
-      font-weight: bold;
-    }
-
-    .status-progress {
-      color: #ca6702;
-      font-weight: bold;
-    }
-
-    .status-completed {
-      color: green;
-      font-weight: bold;
-    }
-  </style>
+    <title>Check Request Status</title>
+    <script>
+        function askUserID() 
+        {
+          var uid = prompt("Enter your User ID:");
+          if (uid === null || uid.trim() === "") 
+          {
+            alert("User ID is required!");
+            return;
+          }
+          window.location.href = "../php/request_status.php?uid=" + uid;
+        }
+    </script>
 </head>
 
-<body>
-  <div class="form-box">
-    <h1>Request Status</h1>
-
-    <p style="text-align:center; color:#005f73;">
-      Below are your submitted maintenance requests and their current status.
-    </p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Request ID</th>
-          <th>Issue Type</th>
-          <th>Description</th>
-          <th>Date Submitted</th>
-          <th>Status</th>
-          <th>Admin Remarks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>REQ001</td>
-          <td>Plumbing</td>
-          <td>Leaking kitchen pipe</td>
-          <td>2025-11-10</td>
-          <td class="status-progress">In Progress</td>
-          <td>Technician assigned</td>
-        </tr>
-        <tr>
-          <td>REQ002</td>
-          <td>Electrical</td>
-          <td>Bedroom light not working</td>
-          <td>2025-11-08</td>
-          <td class="status-completed">Completed</td>
-          <td>Fixed and verified</td>
-        </tr>
-        <tr>
-          <td>REQ003</td>
-          <td>Cleaning</td>
-          <td>Common area needs mopping</td>
-          <td>2025-11-09</td>
-          <td class="status-pending">Pending</td>
-          <td>Awaiting approval</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="footer">
-    2025 Apartment Maintenance System - All Rights Reserved.
-  </div>
+<body onload="askUserID()" action="request_status.php" method="post">
+    <h3 style="text-align:center; margin-top:50px;">Loading Request Status...</h3>
 </body>
 </html>

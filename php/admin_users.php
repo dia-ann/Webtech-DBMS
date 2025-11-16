@@ -1,80 +1,101 @@
 <?php
-session_start();
+$conn = mysqli_connect("localhost", "root", "", "project25_db");
 
-// Only admin can access
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'Admin') {
-    echo "<p>Access denied. Please <a href='../html/signin.html'>sign in</a> as admin.</p>";
-    exit;
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-$conn = new mysqli('localhost', 'root', '', 'project25_db');
-if ($conn->connect_error) {
-    die('DB connection failed: ' . $conn->connect_error);
-}
+$sql = "SELECT user_id, user_fname, user_lname, email, phone, apartment_id, user_role 
+        FROM user_info ORDER BY user_id ASC";
 
-$sql = "SELECT user_id, user_fname, user_lname, email, phone, apartment_id, user_role FROM user_info ORDER BY user_id DESC";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Admin - Users</title>
-  <link rel="stylesheet" href="../css/form_style.css">
-  <style>
-    .container { max-width: 1000px; margin: 30px auto; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-    th { background-color: rgba(0,95,115,0.08); }
-    .delete-btn { background: #b00020; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
-    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-    .back { background:#005f73; color:white; padding:6px 10px; border-radius:4px; text-decoration:none; }
-  </style>
+    <title>All Users</title>
+    <link rel="stylesheet" href="../css/form_style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #94d2bd;
+            color: #003f4f;
+        }
+        .delete-btn {
+            background: #b00020;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: #005f73;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
-  <div class="form-box container">
-    <div class="topbar">
-      <h2>All Registered Users</h2>
-      <a class="back" href="../html/admin_dashboard.html">Back</a>
-    </div>
 
-            <?php if ($result && $result->num_rows > 0): ?>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
+<body>
+<div class="form-box">
+    <a href="../html/admin_dashboard.html" class="back-btn">Back</a>
+    <h1>Registered Users</h1>
+
+    <table>
+        <tr>
+            <th>User ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Apartment</th>
             <th>Role</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = $result->fetch_assoc()): ?>
-          <tr>
-            <td><?php echo htmlspecialchars($row['user_id']); ?></td>
-            <td><?php echo htmlspecialchars($row['user_fname'] . ' ' . $row['user_lname']); ?></td>
-            <td><?php echo htmlspecialchars($row['email']); ?></td>
-            <td><?php echo htmlspecialchars($row['phone']); ?></td>
-            <td><?php echo htmlspecialchars($row['apartment_id']); ?></td>
-            <td><?php echo htmlspecialchars($row['user_role']); ?></td>
-            <td>
-                <form method="post" action="admin_delete_user.php" onsubmit="return confirm('Delete this user?');">
-                  <input type="hidden" name="user_id" value="<?php echo intval($row['user_id']); ?>">
-                  <button type="submit" class="delete-btn">Delete</button>
-                </form>
-            </td>
-          </tr>
-        <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php else: ?>
-      <p>No users found.</p>
-    <?php endif; ?>
+            <th>Action</th>
+        </tr>
 
-  </div>
+        <?php
+        if (mysqli_num_rows($result) > 0) 
+        {
+            while ($row = mysqli_fetch_array($result)) 
+            {
+                echo "<tr>";
+                echo "<td>{$row['user_id']}</td>";
+                echo "<td>{$row['user_fname']} {$row['user_lname']}</td>";
+                echo "<td>{$row['email']}</td>";
+                echo "<td>{$row['phone']}</td>";
+                echo "<td>{$row['apartment_id']}</td>";
+                echo "<td>{$row['user_role']}</td>";
+
+                echo "<td><a href='admin_delete_user.php?user_id={$row['user_id']}'>Delete</a></td>";
+
+                echo "</tr>";
+            }
+        }
+        else
+        {
+            echo "<tr><td colspan='7'>No users found.</td></tr>";
+        }
+        ?>
+    </table>
+</div>
+
+<div class="footer">
+    2025 Apartment Maintenance System — All Rights Reserved
+</div>
+
 </body>
 </html>
-<?php $conn->close(); ?>
+
+<?php mysqli_close($conn); ?>

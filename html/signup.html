@@ -130,8 +130,24 @@
                 alert("Please confirm your Password.");
                 return false;
             }
-            if (password != confirmPassword) {
+            if (password != confirmPassword) 
+            {
                 alert("Passwords do not match.");
+                return false;
+            }
+
+             // Validate checkboxes
+            var selected = "";
+            for (var i = 0; i < checkboxes.length; i++) 
+            {
+                if (checkboxes[i].checked==true) 
+                {
+                    selected += checkboxes[i].value + " ";
+                }
+            }
+            if (selected == "") 
+            {
+                alert("Please select at least one language.");
                 return false;
             }
 
@@ -152,8 +168,8 @@
             <input type="text" id="ln" name="lastname"><br>
 
             <label>Gender:</label><br>
-            <input type="radio" id="m" name="gender" value="male"> Male
-            <input type="radio" id="f" name="gender" value="female"> Female<br>
+            <input type="radio" id="m" name="gender" value="male">Male
+            <input type="radio" id="f" name="gender" value="female">Female<br>
 
             <label>Email:</label>
             <input type="text" id="em" name="email"><br>
@@ -180,7 +196,7 @@
 
             <label>Choose your prefered language</label><br>
             <input type="checkbox" id="en" name="lan" value="English">English<br>
-            <input type="checkbox" id="kon" name="lan" value="Konkani">English<br>
+            <input type="checkbox" id="kon" name="lan" value="Konkani">Konkani<br>
             <input type="checkbox" id="hi" name="lan" value="Hindi">Hindi<br>
             <input type="checkbox" id="other" name="lan" value="Other">Others<br>
             

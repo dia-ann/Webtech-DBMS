@@ -1,82 +1,99 @@
+<?php
+  $conn = mysqli_connect("localhost", "root", "", "project25_db");
+
+  if (!$conn) 
+  {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  $user_id = $_GET['uid'];
+  $sql = "SELECT req_id, maintenance_type, issue_desc, req_date, main_status 
+          FROM request
+          WHERE user_id = '$user_id'
+          ORDER BY req_id DESC";
+
+  $result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <title>Request Status</title>
   <link rel="stylesheet" href="../css/form_style.css">
+
   <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+    .form-box h1{ 
+      text-align: center; 
+      margin-bottom: 20px;
     }
-    th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
+
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 20px; 
     }
-    th {
-      background-color: #94d2bd;
-      color: #003f4f;
+
+    th, td { 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      text-align: center; 
     }
-    tr:nth-child(even) {
-      background-color: #f1f1f1;
+
+    th { 
+      background-color: #94d2bd; 
+      color: #003f4f; 
     }
-    .status-pending { color: #bb3e03; font-weight: bold; }
-    .status-progress { color: #ca6702; font-weight: bold; }
-    .status-completed { color: green; font-weight: bold; }
+
+  
+    .status { 
+        font-weight: bold;
+        color: #003f4f;
+    }
   </style>
 </head>
+
 <body>
   <div class="form-box">
     <h1>Request Status</h1>
+
     <p style="text-align:center; color:#005f73;">
       Below are your submitted maintenance requests and their current status.
     </p>
+    <div style="text-align: right; margin-bottom: 10px;">
+      <a href="../html/resident_dashboard.html">Back</a>
+    </div>
+
+
 
     <table>
       <thead>
         <tr>
           <th>Request ID</th>
-          <th>Apartment Number</th>
-          <th>Issue Type</th>
+          <th>Maintenance Type</th>
           <th>Description</th>
           <th>Date Submitted</th>
           <th>Status</th>
-          <th>Admin Remarks</th>
         </tr>
       </thead>
+
       <tbody>
-        <?php
-        $conn = new mysqli("localhost", "root", "", "project25_db");
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM request ORDER BY req_id DESC";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-            $statusClass = "";
-            if ($row['status'] == 'Pending') $statusClass = "status-pending";
-            elseif ($row['status'] == 'In Progress') $statusClass = "status-progress";
-            elseif ($row['status'] == 'Completed') $statusClass = "status-completed";
-
-            echo "<tr>
-                    <td>".$row['req_id']."</td>
-                    <td>".$row['apartment_id']."</td>
-                    <td>".$row['issue_type']."</td>
-                    <td>".$row['issue_desc']."</td>
-                    <td>".$row['req_date']."</td>
-                    <td class='$statusClass'>".$row['status']."</td>
-                    <td>".$row['admin_remarks']."</td>
-                  </tr>";
+      <?php
+      if (mysqli_num_rows($result) > 0) 
+        {
+          while ($row = mysqli_fetch_array($result)) 
+            {
+              echo "<tr>
+                      <td>{$row['req_id']}</td>
+                      <td>{$row['maintenance_type']}</td>
+                      <td>{$row['issue_desc']}</td>
+                      <td>{$row['req_date']}</td>
+                      <td>{$row['main_status']}</td>
+                    </tr>";
           }
-        } else {
-          echo "<tr><td colspan='7'>No requests found</td></tr>";
+        } 
+        else 
+        {
+          echo "<tr><td colspan='5'>No requests submitted yet.</td></tr>";
         }
-        $conn->close();
-        ?>
+      ?>
       </tbody>
     </table>
   </div>
@@ -86,3 +103,7 @@
   </div>
 </body>
 </html>
+
+<?php 
+  mysqli_close($conn); 
+?>

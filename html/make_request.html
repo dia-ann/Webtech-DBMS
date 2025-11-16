@@ -1,51 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <title>Make a Request</title>
     <link rel="stylesheet" href="../css/form_style.css">
+    <script>
+        
+        function validate()
+        {
+            var name = document.getElementById("rn").value.trim();
+            var num = document.getElementById("an").value.trim();
+            var desc = document.getElementById("des").value;
+            var date = document.getElementById("pdt").value;
+            var checkboxes = document.getElementsByName("maintenanceType[]");
+           
+
+            // patterns
+            var namePattern = /^[A-Za-z]+$/;
+           
+
+            // Validate name
+            if (name == "" || !namePattern.test(name)) 
+            {
+                alert("Please enter a valid Name (only letters).");
+                return false;
+            }
+            
+            
+            // Validate apartment number
+            if (num === "") 
+            {
+                alert("Please enter your Apartment Number.");
+                return false;
+            }
+
+             // Validate checkboxes
+            var selected = "";
+            for (var i = 0; i < checkboxes.length; i++) 
+            {
+                if (checkboxes[i].checked==true) 
+                {
+                    selected += checkboxes[i].value + " ";
+                }
+            }
+            if (selected == "") 
+            {
+                alert("Please select at least one maintenance type.");
+                return false;
+            }
+
+            //validate issue description
+            if(desc == "")
+            {
+                alert("Describe the issue");
+                return false;
+            }
+           
+            alert("All details are valid. Form submitted successfully!");
+            return true
+        }
+    </script>
 </head>
 <body>
     <div class="form-box">
         <h1>New Maintenance Request</h1>
-
-        <!-- Form sends data to PHP file -->
-        <form action="../php/submit_request.php" method="POST" enctype="multipart/form-data">
+        <form onsubmit="return validate()" action="../php/make_request.php" method="POST">
 
             <label>Request ID:</label>
-            <input type="text" id="requestId" name="requestId" readonly value="" placeholder="(assigned after submit)"><br>
+            <input type="text" id="req_id" name="requestId" readonly value="" placeholder="(assigned after submit)"><br>
 
             <label>Resident Name:</label>
-            <input type="text" id="residentName" name="residentName" required><br>
+            <input type="text" id="rn" name="residentName"><br>
 
             <label>Apartment Number:</label>
-            <input type="text" id="apartmentNumber" name="apartmentNumber" required><br>
+            <input type="number" id="an" name="apartmentNumber"><br>
 
-            <label>Maintenance Type:</label>
-            <select name="issueType" required>
-                <option value="">--Select--</option>
-                <option value="plumbing">Plumbing</option>
-                <option value="electrical">Electrical</option>
-                <option value="painting">Painting</option>
-                <option value="cleaning">Cleaning</option>
-                <option value="other">Other</option>
-            </select><br>
+            <label>User ID:</label>
+            <input type="number" id="un" name="user_id"><br>
+
+            
+
+            <label>Maintenance Type:</label><br>
+            <input type="checkbox" id="pa" name="maintenanceType[]" value="Painting">Painting<br>
+            <input type="checkbox" id="pl" name="maintenanceType[]" value="Plumbing">Plumbing<br>
+            <input type="checkbox" id="ec" name="maintenanceType[]" value="Electrical">Electrical<br>
+            <input type="checkbox" id="cl" name="maintenanceType[]" value="Cleaning">Cleaning<br>
+            <input type="checkbox" id="ot" name="maintenanceType[]" value="Others">Others<br>
+            
 
             <label>Issue Description:</label>
-            <textarea id="description" name="description" rows="4" cols="40" placeholder="Describe the issue in detail"></textarea><br>
+            <textarea id="des" name="description" rows="4" cols="40" ></textarea><br>
 
-            <label>Preferred Date & Time for Repair:</label>
-            <input type="datetime-local" id="preferredDateTime" name="preferredDateTime"><br>
+            <label>Preferred Date Repair:</label>
+            <input type="date" id="pdt" name="preferredDate"><br>
 
-            <label>Urgency Level:</label>
-            <input type="range" id="urgency" name="urgency" min="1" max="5"><br>
-
-            <label>Contact Number:</label>
-            <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" placeholder="10-digit number" required><br>
-
-            <label>Priority:</label>
-            <input type="radio" name="priority" value="high"> High
-            <input type="radio" name="priority" value="medium"> Medium
-            <input type="radio" name="priority" value="low"> Low<br>
+          
 
             <input type="submit" value="Submit">
             <input type="reset" value="Reset">
