@@ -5,9 +5,9 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-if (isset($_POST['user_id'])) 
+if (isset($_GET['user_id'])) 
 {
-    $user_id = $_POST['user_id'];
+    $user_id = $_GET['user_id'];
 
     $sql = "DELETE FROM user_info WHERE user_id = '$user_id'";
 
