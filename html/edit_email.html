@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Edit</title>
+        <script>
+            function validate()
+            {
+                uid=prompt("Enter user ID");
+                if(uid=="")
+                {
+                    alert("Empty field!!");
+                    return;
+                }
+
+                new_em=prompt("enter new email ID");
+                if(new_em=="")
+                {
+                    alert("Empty field!");
+                    return;
+                }
+                window.location.href = "../php/edit_email.php?user_id=" + uid + "&email=" +new_em;
+            }
+        </script>
+
+    </head>
+    <body onload="validate()"></body>
+</html>

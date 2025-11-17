@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Edit</title>
+        <script>
+            function validate()
+            {
+                uid=prompt("Enter user ID");
+                if(uid=="")
+                {
+                    alert("Empty field!!");
+                    return;
+                }
+
+                new_num=prompt("enter new phone number");
+                if(new_num=="")
+                {
+                    alert("Empty field!");
+                    return;
+                }
+                window.location.href = "../php/edit_phonenum.php?user_id=" + uid + "&phone=" +new_num;
+            }
+        </script>
+
+    </head>
+    <body onload="validate()"></body>
+</html>

@@ -6,7 +6,7 @@
         function askUserID() 
         {
           var uid = prompt("Enter your User ID:");
-          if (uid === null || uid.trim() === "") 
+          if (uid =="") 
           {
             alert("User ID is required!");
             return;
@@ -16,7 +16,7 @@
     </script>
 </head>
 
-<body onload="askUserID()" action="request_status.php" method="post">
+<body onload="askUserID()" action="request_status.php" method="get">
     <h3 style="text-align:center; margin-top:50px;">Loading Request Status...</h3>
 </body>
 </html>

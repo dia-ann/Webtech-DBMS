@@ -14,14 +14,13 @@
             var email = document.getElementById("em").value.trim();
             var phone = document.getElementById("phn").value.trim();
             var num = document.getElementById("num").value.trim();
-            var checkboxes = document.getElementsByName("lan");
+            var checkboxes = document.getElementsByName("lan[]");
            
             var address = document.getElementById("add").value.trim();
             var accType = document.getElementById("account_type");
             var password = document.getElementById("ps").value.trim();
             var confirmPassword = document.getElementById("cps").value.trim();
-            var checkboxes = document.getElementsByName("tp");
-
+            
             // patterns
             var namePattern = /^[A-Za-z]+$/;
             var emailPattern = /^([a-zA-Z0-9\.\-]+)@([a-zA-Z0-9\-]+)\.([a-z]+)(\.[a-z]+)?$/;
@@ -195,10 +194,10 @@
             <input type="password" id="cps" name="confirm_password"><br>
 
             <label>Choose your prefered language</label><br>
-            <input type="checkbox" id="en" name="lan" value="English">English<br>
-            <input type="checkbox" id="kon" name="lan" value="Konkani">Konkani<br>
-            <input type="checkbox" id="hi" name="lan" value="Hindi">Hindi<br>
-            <input type="checkbox" id="other" name="lan" value="Other">Others<br>
+            <input type="checkbox" id="en" name="lan[]" value="English">English<br>
+            <input type="checkbox" id="kon" name="lan[]" value="Konkani">Konkani<br>
+            <input type="checkbox" id="hi" name="lan[]" value="Hindi">Hindi<br>
+            <input type="checkbox" id="other" name="lan[]" value="Other">Others<br>
             
            
             

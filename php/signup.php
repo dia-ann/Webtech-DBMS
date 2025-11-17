@@ -13,7 +13,18 @@
     $apt_num = $_POST['num'];
     $user_role = $_POST['account_type'];
     $password = $_POST['password'];
-    $lang_known=$_POST['lan']
+    if (isset($_POST['lan'])) {
+    if (is_array($_POST['lan'])) {
+        // multiple checkboxes
+        $lang_known = implode(", ", $_POST['lan']);
+    } else {
+        // only one checkbox selected
+        $lang_known = $_POST['lan'];
+    }
+} else {
+    $lang_known = "";  // no selection
+}
+
     
     $sql = "INSERT INTO user_info(user_fname, user_lname, gender, email, phone, apartment_id, user_role, lang, passwd) VALUES 
         ('$fname', '$lname', '$gender', '$email', '$phone', '$apt_num', '$user_role','$lang_known', '$password')";
@@ -35,7 +46,7 @@
             while($info=mysqli_fetch_array($r2))
             {
                 echo "<br>User ID is ".$info['user_id'];
-                echo "<br> Name is " .$info['usser_fname'];
+                echo "<br> Name is " .$info['user_fname'];
                 echo " " .$info['user_lname'];
                 echo "<br> Gender is " .$info['gender'];
                 echo "<br> Email is " .$info['email'];
@@ -43,7 +54,7 @@
                 echo "<br> Phone Number is " .$info['phone'];
                 echo "<br> Apartment ID is " .$info['apartment_id'];
                 echo "<br> Account created at " .$info['created_at'];
-                echo "<br> Languages selected " .$info['lang'];
+                echo "<br> Languages selected: " .$info['lang'];
                 echo "<br><br><br><br>";
 
             }
@@ -59,7 +70,7 @@
 <!DOCTYPE HTML>
 <html>
     <body>
-        <button onclick="window.location.href='homepage.html'">Go to Homepage</button>
+        <button onclick="window.location.href='../html/homepage.html'">Go to Homepage</button>
     </body>
 </html>
 
