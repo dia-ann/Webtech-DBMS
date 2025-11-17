@@ -3,104 +3,125 @@
 <head>
   <meta charset="utf-8">
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="../css/form_style.css">
   <style>
-    .container{ 
-    max-width: 900px;
-    margin: 40px auto; 
-    text-align: center; 
+    body {
+      background-color: #f1f8f6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    .grid { 
-      display:flex; 
-      gap:20px; 
-      justify-content:center; 
-      margin-top:30px; 
+
+    header {
+      background-color: #005f73;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
     }
-    .card { 
-      background: #fff; 
-      border: 1px solid #e6e6e6; 
-      padding: 30px; 
-      width: 260px; 
-      border-radius:10px; 
+
+    header h2 {
+      font-size: 24px;
     }
-    .card h3 { 
-      margin: 0 0 12px 0; 
-      color:#005f73; 
+
+    .admin-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .card p { 
-      color:#333; 
-      font-size:14px; 
-      margin-bottom:18px 
+
+    .admin-info img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 3px;
     }
-    .card a { 
-      display:inline-block; 
-      padding:10px 16px; 
-      background:#005f73; 
-      color:white; 
-      text-decoration:none; 
-      border-radius:6px; 
+
+    .admin-info span {
+      font-weight: bold;
+      font-size: 16px;
     }
-    .top { 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      gap:10px; 
+
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 75vh;
+      gap: 50px;
+      padding-top: 40px;
     }
-    .top a.logout { 
-      background:#b00020; 
-      padding:8px 12px; 
-      color:white; 
-      border-radius:6px; 
-      text-decoration:none; 
+
+    .row {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
     }
+
+    .box {
+      display: inline-block;
+      background-color: #94d2bd;
+      border: 2px solid #005f73;
+      border-radius: 12px;
+      width: 280px;
+      height: 180px;
+      text-align: center;
+      line-height: 180px;
+      font-size: 20px;
+      color: #003f4f;
+      font-weight: bold;
+    }
+
+    .box:hover {
+      background-color: #0a9396;
+      color: white;
+    }
+
     
     footer {
-      background-color: #005f73;  
+      background-color: #005f73;
       color: white;
       text-align: center;
-      padding: 12px 0;
-      font-size: 14px;
-      margin-top: 40px;
-      margin-bottom: 0px;
+      padding: 0px;
+      position: fixed;
+      bottom: 0;
       width: 100%;
+      font-size: 14px;
     }
   </style>
 </head>
+
 <body>
-  <div class="form-box container">
-    <div class="top">
-      <h1>Admin Dashboard</h1>
-    </div>
-
-    <p style="color:#005f73;">Manage users and requests.</p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Manage Users</h3>
-        <p>View all registered users and delete accounts.</p>
-        <a href="../php/admin_users.php">Open Users</a>
-      </div>
-
-      <div class="card">
-        <h3>Manage Requests</h3>
-        <p>View, update status, and delete maintenance requests.</p>
-        <a href="../php/admin_requests.php">Open Requests</a>
-      </div>
-
-      <div class="card">
-        <h3>Apartment Details</h3>
-        <p>Search for apartments details</p>
-        <a href="search.html">Search</a>
-      </div>
-    </div>
-
-    <div style="margin-top:28px">
-      <a href="homepage.html">Back to Homepage</a>
-    </div>
-  </div>
-   <footer>
-    <p>2025 Apartment Maintenance System — All Rights Reserved</p>
-  </footer>
 
   
+  <header>
+    <h2>Admin Dashboard</h2>
+    <div class="admin-info">
+      <img src="../images/image_4.png" alt="Admin">
+      <h4>Welcome Admin</h4>
+    </div>
+  </header>
+
+ 
+  <div class="dashboard">
+
+    <div class="row">
+      <a href="../php/admin_users.php" class="box">Manage Users</a>
+      <a href="../php/admin_requests.php" class="box">Manage Requests</a>
+      <a href="search.html" class="box">Apartment Details</a>
+    </div>
+
+  </div>
+
+  
+    <div style="text-align:center; margin:0px 5px">
+      <a href="homepage.html">Back to Homepage</a>
+    </div>
+
+
+  <footer>
+    2025 Apartment Maintenance System — All Rights Reserved
+  </footer>
+
+</body>
 </html>

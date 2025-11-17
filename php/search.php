@@ -28,7 +28,7 @@ if ($r1)
                 font-size: 18px;
                 line-height: 1.6;
                 backdrop-filter: blur(4px);
-                color: black;
+                color: white;
             '>";
 
             echo "<h2>Apartment Details</h2>";
